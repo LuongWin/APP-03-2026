@@ -1,0 +1,247 @@
+{
+  "students": [
+    {
+      "id": 1,
+      "studentCode": "SV2021001",
+      "fullName": "Nguyễn Văn An",
+      "className": "CNTT-K21A",
+      "major": "Công nghệ thông tin",
+      "email": "an.nv@student.edu.vn",
+      "phone": "0912345678",
+      "updatedAt": "2026-10-20T08:00:00Z"
+    },
+    {
+      "id": 2,
+      "studentCode": "SV2021002",
+      "fullName": "Trần Thị Bình",
+      "className": "CNTT-K21A",
+      "major": "Công nghệ thông tin",
+      "email": "binh.tt@student.edu.vn",
+      "phone": "0912345679",
+      "updatedAt": "2026-10-20T08:00:00Z"
+    },
+    {
+      "id": 3,
+      "studentCode": "SV2021003",
+      "fullName": "Lê Hoàng Cường",
+      "className": "CNTT-K21B",
+      "major": "Khoa học máy tính",
+      "email": "cuong.lh@student.edu.vn",
+      "phone": "0912345680",
+      "updatedAt": "2026-10-20T08:00:00Z"
+    },
+    {
+      "id": 4,
+      "studentCode": "SV2021004",
+      "fullName": "Phạm Minh Dung",
+      "className": "CNTT-K21B",
+      "major": "Kỹ thuật phần mềm",
+      "email": "dung.pm@student.edu.vn",
+      "phone": "0912345681",
+      "updatedAt": "2026-10-20T08:00:00Z"
+    },
+    {
+      "id": 5,
+      "studentCode": "SV2021005",
+      "fullName": "Hoàng Tuấn Em",
+      "className": "CNTT-K21A",
+      "major": "Hệ thống thông tin",
+      "email": "em.ht@student.edu.vn",
+      "phone": "0912345682",
+      "updatedAt": "2026-10-20T08:00:00Z"
+    }
+  ],
+  "courses": [
+    {
+      "id": 1,
+      "code": "INT3120",
+      "name": "Phát triển ứng dụng di động",
+      "credits": 3,
+      "lecturer": "TS. Trần Minh",
+      "description": "Lập trình ứng dụng di động đa nền tảng với React Native.",
+      "semester": "HK1 2026-2027"
+    },
+    {
+      "id": 2,
+      "code": "INT3306",
+      "name": "Phát triển ứng dụng Web",
+      "credits": 3,
+      "lecturer": "ThS. Lê Thị Hoa",
+      "description": "Thiết kế và xây dựng ứng dụng web hiện đại với React và Node.js.",
+      "semester": "HK1 2026-2027"
+    },
+    {
+      "id": 3,
+      "code": "INT2204",
+      "name": "Cơ sở dữ liệu",
+      "credits": 4,
+      "lecturer": "TS. Nguyễn Hoàng Nam",
+      "description": "Mô hình quan hệ, ngôn ngữ SQL, thiết kế và chuẩn hóa CSDL.",
+      "semester": "HK1 2026-2027"
+    },
+    {
+      "id": 4,
+      "code": "INT3401",
+      "name": "An toàn và bảo mật thông tin",
+      "credits": 3,
+      "lecturer": "ThS. Phạm Quốc Cường",
+      "description": "Các kỹ thuật mã hóa, bảo mật mạng và chính sách an toàn thông tin.",
+      "semester": "HK1 2026-2027"
+    },
+    {
+      "id": 5,
+      "code": "INT2215",
+      "name": "Lập trình mạng",
+      "credits": 3,
+      "lecturer": "TS. Đỗ Thanh Tuấn",
+      "description": "Giao thức mạng, Socket TCP/UDP, RESTful API và WebSocket.",
+      "semester": "HK2 2025-2026"
+    }
+  ],
+  "sessions": [
+    {
+      "id": 1,
+      "courseId": 1,
+      "dayOfWeek": 2,
+      "startTime": "07:00",
+      "endTime": "09:30",
+      "room": "P.301-A2",
+      "note": "Mang laptop cài sẵn Node.js và máy ảo Android"
+    },
+    {
+      "id": 2,
+      "courseId": 2,
+      "dayOfWeek": 3,
+      "startTime": "13:00",
+      "endTime": "15:30",
+      "room": "P.205-B1",
+      "note": "Thực hành thiết kế API"
+    },
+    {
+      "id": 3,
+      "courseId": 3,
+      "dayOfWeek": 4,
+      "startTime": "07:30",
+      "endTime": "11:00",
+      "room": "P.402-A1",
+      "note": "Kiểm tra bài tập SQL trên máy"
+    },
+    {
+      "id": 4,
+      "courseId": 4,
+      "dayOfWeek": 5,
+      "startTime": "09:00",
+      "endTime": "11:30",
+      "room": "P.102-C3",
+      "note": "Thảo luận về tấn công XSS và SQL Injection"
+    },
+    {
+      "id": 5,
+      "courseId": 1,
+      "dayOfWeek": 6,
+      "startTime": "14:00",
+      "endTime": "16:30",
+      "room": "P.301-A2",
+      "note": "Báo cáo tiến độ đồ án React Native"
+    }
+  ],
+  "assignments": [
+    {
+      "id": 1,
+      "courseId": 1,
+      "title": "Thực hành 4: API & Offline",
+      "description": "Kết nối API và hỗ trợ chế độ offline.",
+      "dueDate": "2026-11-09T23:59:00Z",
+      "status": "todo",
+      "updatedAt": "2026-10-26T08:00:00Z"
+    },
+    {
+      "id": 2,
+      "courseId": 1,
+      "title": "Thực hành 3: Điều hướng 5 Tab",
+      "description": "Xây dựng 5 tab cơ bản với React Navigation.",
+      "dueDate": "2026-10-20T23:59:00Z",
+      "status": "done",
+      "updatedAt": "2026-10-20T10:00:00Z"
+    },
+    {
+      "id": 3,
+      "courseId": 2,
+      "title": "Bài tập lớn Web: Viết REST API",
+      "description": "Xây dựng backend Node.js Express có xác thực JWT.",
+      "dueDate": "2026-11-15T23:59:00Z",
+      "status": "todo",
+      "updatedAt": "2026-10-25T14:00:00Z"
+    },
+    {
+      "id": 4,
+      "courseId": 3,
+      "title": "Bài tập CSDL: Thiết kế lược đồ ERD",
+      "description": "Thiết kế mô hình dữ liệu cho hệ thống bán hàng trực tuyến.",
+      "dueDate": "2026-11-05T23:59:00Z",
+      "status": "todo",
+      "updatedAt": "2026-10-26T07:57:55.514Z"
+    },
+    {
+      "id": 5,
+      "courseId": 4,
+      "title": "Báo cáo an toàn thông tin: Mã hóa RSA",
+      "description": "Tìm hiểu thuật toán mã hóa công khai RSA và chữ ký số.",
+      "dueDate": "2026-10-18T23:59:00Z",
+      "status": "done",
+      "updatedAt": "2026-10-18T16:00:00Z"
+    }
+  ],
+  "grades": [
+    {
+      "id": 1,
+      "courseId": 1,
+      "semester": "HK1 2026-2027",
+      "attendance": 9,
+      "midterm": 7.5,
+      "final": 8.5,
+      "total": 8.25,
+      "letter": "B+"
+    },
+    {
+      "id": 2,
+      "courseId": 2,
+      "semester": "HK1 2026-2027",
+      "attendance": 10,
+      "midterm": 8.5,
+      "final": 9,
+      "total": 8.95,
+      "letter": "A"
+    },
+    {
+      "id": 3,
+      "courseId": 3,
+      "semester": "HK1 2026-2027",
+      "attendance": 8.5,
+      "midterm": 7,
+      "final": 7.5,
+      "total": 7.45,
+      "letter": "B"
+    },
+    {
+      "id": 4,
+      "courseId": 4,
+      "semester": "HK1 2026-2027",
+      "attendance": 9,
+      "midterm": 8,
+      "final": 8,
+      "total": 8.1,
+      "letter": "B+"
+    },
+    {
+      "id": 5,
+      "courseId": 5,
+      "semester": "HK2 2025-2026",
+      "attendance": 10,
+      "midterm": 9,
+      "final": 9.5,
+      "total": 9.4,
+      "letter": "A"
+    }
+  ]
+}

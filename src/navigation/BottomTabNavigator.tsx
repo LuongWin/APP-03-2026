@@ -1,16 +1,22 @@
+// src/navigation/BottomTabNavigator.tsx
+// Thanh điều hướng 5 Tab chính của ứng dụng với icon nét đơn tối giản và badge bài tập cần làm
+
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { BottomTabParamList } from '../types';
 
-import { HomeScreen } from '../screens/HomeScreen';
-import { SubjectsScreen } from '../screens/SubjectsScreen';
-import { ScheduleScreen } from '../screens/ScheduleScreen';
-import { AssignmentsScreen } from '../screens/AssignmentsScreen';
-import { ProfileScreen } from '../screens/ProfileScreen';
+import HomeStack from './HomeStack';
+import CourseStack from './CourseStack';
+import ScheduleStack from './ScheduleStack';
+import AssignmentStack from './AssignmentStack';
+import ProfileStack from './ProfileStack';
 
-const Tab = createBottomTabNavigator<BottomTabParamList>();
+import { ROUTES } from './routes';
+import { useAppData } from '../context/AppDataContext';
+import colors from '../theme/colors';
+
+const Tab = createBottomTabNavigator();
 
 // 1. Icon Trang chủ nét đơn
 const HomeIcon = ({ color }: { color: string }) => (
@@ -21,7 +27,7 @@ const HomeIcon = ({ color }: { color: string }) => (
 );
 
 // 2. Icon Môn học (3 vạch ngang nét đơn)
-const SubjectsIcon = ({ color }: { color: string }) => (
+const CourseIcon = ({ color }: { color: string }) => (
   <View style={[iconStyles.container, iconStyles.linesBox]}>
     <View style={[iconStyles.line, { backgroundColor: color }]} />
     <View style={[iconStyles.line, { backgroundColor: color }]} />
@@ -41,7 +47,7 @@ const ScheduleIcon = ({ color }: { color: string }) => (
 );
 
 // 4. Icon Bài tập (Danh sách công việc nét đơn)
-const AssignmentsIcon = ({ color }: { color: string }) => (
+const AssignmentIcon = ({ color }: { color: string }) => (
   <View style={[iconStyles.container, iconStyles.taskBox, { borderColor: color }]}>
     <View style={[iconStyles.taskClip, { backgroundColor: color }]} />
     <View style={[iconStyles.taskLine, { backgroundColor: color }]} />
@@ -57,31 +63,27 @@ const ProfileIcon = ({ color }: { color: string }) => (
   </View>
 );
 
-export const BottomTabNavigator: React.FC = () => {
+export default function BottomTabNavigator() {
   const insets = useSafeAreaInsets();
+  const { assignments } = useAppData();
+
+  // Đếm số bài tập chưa hoàn thành để gán badge lên tab Bài tập
+  const todoCount = assignments.filter(a => a.status === 'todo').length;
 
   return (
     <Tab.Navigator
-      initialRouteName="HomeTab"
+      initialRouteName={ROUTES.HOME_TAB}
       screenOptions={{
-        headerStyle: {
-          backgroundColor: '#0066cc',
-        },
-        headerTintColor: '#ffffff',
-        headerTitleStyle: {
-          fontWeight: 'bold',
-          fontSize: 16,
-        },
-        headerTitleAlign: 'center',
-        tabBarActiveTintColor: '#0066cc',
-        tabBarInactiveTintColor: '#555555',
+        headerShown: false,
+        tabBarActiveTintColor: colors.primary,
+        tabBarInactiveTintColor: colors.textMuted,
         tabBarStyle: {
           height: 56 + (insets.bottom > 0 ? insets.bottom : 8),
           paddingBottom: insets.bottom > 0 ? insets.bottom + 4 : 8,
           paddingTop: 6,
-          backgroundColor: '#ffffff',
+          backgroundColor: colors.card,
           borderTopWidth: 1,
-          borderTopColor: '#cccccc',
+          borderTopColor: colors.border,
         },
         tabBarLabelStyle: {
           fontSize: 11,
@@ -89,57 +91,58 @@ export const BottomTabNavigator: React.FC = () => {
         },
       }}>
       <Tab.Screen
-        name="HomeTab"
-        component={HomeScreen}
+        name={ROUTES.HOME_TAB}
+        component={HomeStack}
         options={{
-          title: 'Trang chủ',
           tabBarLabel: 'Trang chủ',
           tabBarIcon: ({ color }) => <HomeIcon color={color} />,
         }}
       />
 
       <Tab.Screen
-        name="SubjectsTab"
-        component={SubjectsScreen}
+        name={ROUTES.COURSE_TAB}
+        component={CourseStack}
         options={{
-          title: 'Môn học',
           tabBarLabel: 'Môn học',
-          tabBarIcon: ({ color }) => <SubjectsIcon color={color} />,
+          tabBarIcon: ({ color }) => <CourseIcon color={color} />,
         }}
       />
 
       <Tab.Screen
-        name="ScheduleTab"
-        component={ScheduleScreen}
+        name={ROUTES.SCHEDULE_TAB}
+        component={ScheduleStack}
         options={{
-          title: 'Thời khóa biểu',
           tabBarLabel: 'Lịch học',
           tabBarIcon: ({ color }) => <ScheduleIcon color={color} />,
         }}
       />
 
       <Tab.Screen
-        name="AssignmentsTab"
-        component={AssignmentsScreen}
+        name={ROUTES.ASSIGNMENT_TAB}
+        component={AssignmentStack}
         options={{
-          title: 'Bài tập',
           tabBarLabel: 'Bài tập',
-          tabBarIcon: ({ color }) => <AssignmentsIcon color={color} />,
+          tabBarBadge: todoCount > 0 ? todoCount : undefined,
+          tabBarBadgeStyle: {
+            backgroundColor: colors.danger,
+            fontSize: 10,
+            lineHeight: 14,
+          },
+          tabBarIcon: ({ color }) => <AssignmentIcon color={color} />,
         }}
       />
 
       <Tab.Screen
-        name="ProfileTab"
-        component={ProfileScreen}
+        name={ROUTES.PROFILE_TAB}
+        component={ProfileStack}
         options={{
-          title: 'Cá nhân & Điểm',
           tabBarLabel: 'Cá nhân',
           tabBarIcon: ({ color }) => <ProfileIcon color={color} />,
         }}
       />
     </Tab.Navigator>
   );
-};
+}
 
 const iconStyles = StyleSheet.create({
   container: {
@@ -164,7 +167,7 @@ const iconStyles = StyleSheet.create({
     borderWidth: 1.5,
     borderTopWidth: 0,
   },
-  // Subjects
+  // Courses
   linesBox: {
     justifyContent: 'space-evenly',
     paddingVertical: 3,
